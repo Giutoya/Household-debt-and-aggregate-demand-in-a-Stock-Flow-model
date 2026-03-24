@@ -146,7 +146,7 @@ REPimp=0
 Kt=0
 kappa=1'0.5  '0.5    '0.9            '0.8
 
-iD=0'.01 
+iD=0'.01   <- To perform sensitivity
 iL=0.02 
 
 'household
@@ -154,8 +154,8 @@ ct=0                       'total cons
 c1=1                    'cons1 
 c2=1                     'cons2
 
-alpha1=0.1           ' cons par.  0.4
-alpha2=1'0.7    '0.7 '1         ' cons par.
+alpha1=0.3           ' cons par.  0.4
+alpha2=0.6'0.7    '0.7 '1         ' cons par.
 w1=650                       'wage
 w2=0'400                      'wage 
 Lhh1=0     '1000                     ' demand for loans 
@@ -219,7 +219,7 @@ model model11
 
 model11.append Y=ct+I
 
-'government                il modello non è più consistiente dopo aver introdotto nuovamente i gamma nelle funzioni di risparmio e domanda di prestiti <---------------------------------------------------------------------------------------------------------------------------------------------------------------
+'government                il modello non Ã¨ piÃ¹ consistiente dopo aver introdotto nuovamente i gamma nelle funzioni di risparmio e domanda di prestiti <---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 'imprese 
 
@@ -371,153 +371,157 @@ smpl 248 270
 
 
 graph fig1.line       c2_1/c2_0  (lhh2_1*0.001)+1  'c2_2/c2_0  (lhh2_2*0.001)+1 '1.65  1.85'  (lhh2_1/yd2_1)      (lhh2_1/yd2_1)                        yd2_1/yd2_0 lhh2_1/yd2_1        c2_1/c2_0  Yd2_1/Yd2_0 (lhh2_1*0.001)+1    (lhh2_1/yd2_1) yd2_1/yd2_0 (lhh2_1)*0.001 c2_1/c2_0
-fig1.draw(shade, bottom, color(246, 245, 238)) 248 270
+'fig1.draw(shade, bottom, color(246, 245, 238)) 248 270
 fig1.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig1.options linepat
 fig1.options gridl gridb gridauto frameaxes("none")
 fig1.axis mirror
-fig1.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig1.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig1.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig1.setelem(2) lcolor(black) lwidth(2) lpat(2)
 'fig1.setelem(3) lcolor(grey) lwidth(2) lpat(1)
 'fig1.setelem(4) lcolor(grey) lwidth(2) lpat(2)
 'fig1.setelem(5) lcolor(grey) lwidth(2) lpat(2)
 'fig1.name(1) w disp income 
-fig1.name(1)  w consumption ' (lower credit supply)                                 'w loans  'rentiers consumption
-fig1.name(2) w stock of debt '(lower credit supply)
-'fig1.name(3)  w consumption (stronger credit supply)
-'fig1.name(4) w stock of debt (stronger credit supply)
+fig1.name(1)  w consumption ' (lower emulation)                                 'w loans  'rentiers consumption
+fig1.name(2) w stock of debt '(lower emulation)
+'fig1.name(3)  w consumption (stronger emulation)
+'fig1.name(4) w stock of debt (stronger emulation)
 fig1.addtext(t,just(c),font(16))  Workers Consumption and stock of debt   'rentiers consumption and disposable income 
 fig1.legend -inbox
 show fig1
-
+fig1.save(t=jpg) fig1
 
 graph fig2.line      yd2_1/yd2_0  (lhh2_1*0.001)+1 'yd2_2/yd2_0  (lhh2_2*0.001)+1 '1.65  1.85'  (lhh2_1/yd2_1)      (lhh2_1/yd2_1)                        yd2_1/yd2_0 lhh2_1/yd2_1        c2_1/c2_0  Yd2_1/Yd2_0 (lhh2_1*0.001)+1    (lhh2_1/yd2_1) yd2_1/yd2_0 (lhh2_1)*0.001 c2_1/c2_0
-fig2.draw(shade, bottom, color(246, 245, 238)) 248 270
+'fig2.draw(shade, bottom, color(246, 245, 238)) 248 270
 fig2.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig2.options linepat
 fig2.options gridl gridb gridauto frameaxes("none")
 fig2.axis mirror
-fig2.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig2.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig2.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig2.setelem(2) lcolor(black) lwidth(2) lpat(2)
 'fig2.setelem(3) lcolor(grey) lwidth(2) lpat(1)
 'fig2.setelem(4) lcolor(grey) lwidth(2) lpat(2)
 'fig2.setelem(5) lcolor(green) lwidth(2) lpat(2)
-fig2.name(1) w disp income (lower credit supply)
+fig2.name(1) w disp income (lower emulation)
 'fig2.name(1)  w consumption                                   'w loans  'rentiers consumption
-fig2.name(2) w stock of debt (lower credit supply)
-'fig2.name(3) w disp income (stronger credit supply)
+fig2.name(2) w stock of debt (lower emulation)
+'fig2.name(3) w disp income (stronger emulation)
 ''fig2.name(1)  w consumption                                   'w loans  'rentiers consumption
-'fig2.name(4) w stock of debt (stronger credit supply)
+'fig2.name(4) w stock of debt (stronger emulation)
 'fig2.name(4) demand for loans 
 'fig2.name(5) leverage
 fig2.addtext(t,just(c),font(16))  Workers Disposable Income and stock of debt   'rentiers consumption and disposable income 
 fig2.legend -inbox
 show fig2
+fig2.save(t=jpg) fig2
 
 
 
 
 graph fig4.line yd2_1/yd2_0  (dlhh2_1*0.001)+1     c2_1/c2_0 'yd2_2/yd2_0  (dlhh2_2*0.001)+1     c2_2/c2_0 '( lhh1_1/yd1_1)+1
-fig4.draw(shade, bottom, color(246, 245, 238)) 248 270
+'fig4.draw(shade, bottom, color(246, 245, 238)) 248 270
 fig4.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig4.options linepat
 fig4.options gridl gridb gridauto frameaxes("none")
 fig4.axis mirror
-fig4.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig4.setelem(2) lcolor(black) lwidth(2) lpat(2)
-fig4.setelem(3) lcolor(black) lwidth(2) lpat(3)
-fig4.setelem(4) lcolor(grey) lwidth(2) lpat(1)
-fig4.setelem(5) lcolor(grey) lwidth(2) lpat(2)
-fig4.setelem(6) lcolor(grey) lwidth(2) lpat(3)
-fig4.name(1) w disp income  (lower credit supply) 
-fig4.name(2) Workers demand for loans ' (lower credit supply)                       'w loans  'rentiers consumption
+'fig4.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig4.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig4.setelem(3) lcolor(black) lwidth(2) lpat(3)
+'fig4.setelem(4) lcolor(grey) lwidth(2) lpat(1)
+'fig4.setelem(5) lcolor(grey) lwidth(2) lpat(2)
+'fig4.setelem(6) lcolor(grey) lwidth(2) lpat(3)
+fig4.name(1) w disp income  (lower emulation) 
+fig4.name(2) Workers demand for loans ' (lower emulation)                       'w loans  'rentiers consumption
 'fig4.name(3) workers stock of debt
-fig4.name(3) workers consumption  ' (lower credit supply) 
-'fig4.name(4) w disp income  (stronger credit supply) 
-'fig4.name(5) Workers demand for loans   (stronger credit supply)                      'w loans  'rentiers consumption
+fig4.name(3) workers consumption  ' (lower emulation) 
+'fig4.name(4) w disp income  (stronger emulation) 
+'fig4.name(5) Workers demand for loans   (stronger emulation)                      'w loans  'rentiers consumption
 'fig4.name(3) workers stock of debt
-fig4.name(6) workers consumption   (stronger credit supply) 
+fig4.name(6) workers consumption   (stronger emulation) 
 
 'fig1.name(5) constot
 fig4.addtext(t,just(c),font(16))     'rentiers consumption and disposable income 
 fig4.legend -inbox
 show fig4
+fig4.save(t=jpg) fig4
 
 
 
 
 graph fig5.line c1_1/c1_0 'c1_2/c1_0'( lhh1_1/yd1_1)+1
-fig5.draw(shade, bottom, color(246, 245, 238)) 248 270
+'fig5.draw(shade, bottom, color(246, 245, 238)) 248 270
 fig5.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig5.options linepat
 fig5.options gridl gridb gridauto frameaxes("none")
 fig5.axis mirror
-fig5.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig5.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig5.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig5.setelem(2) lcolor(black) lwidth(2) lpat(2)
 'fig5.setelem(2) lcolor(grey) lwidth(2) lpat(1)
 'fig5.setelem(4) lcolor(grey) lwidth(2) lpat(2)
 'fig4.setelem(5) lcolor(green) lwidth(2) lpat(2)
 'fig5.name(1)  rentiers disposable income'Gdp 
 'fig5.name(2) rentiers stock of debt                    'w loans  'rentiers consumption
-fig5.name(1) rentiers consumption ' (lower credit supply) 
-'fig5.name(2) rentiers consumption  (stronger credit supply)
+fig5.name(1) rentiers consumption ' (lower emulation) 
+'fig5.name(2) rentiers consumption  (stronger emulation)
 'fig5.name(4) workers consumption 
 'fig1.name(5) constot
 fig5.addtext(t,just(c),font(16))  rentiers consumption     'rentiers consumption and disposable income 
 fig5.legend -inbox
 show fig5
+fig5.save(t=jpg) fig5
 
 
 
 
 graph fig7.line  y_1/y_0 'y_2/y_0                                        'yd2_1/yd2_0 (lhh2_1*0.001)+0.5 c2_1/c2_0'( lhh1_1/yd1_1)+1
-fig7.draw(shade, bottom, color(246, 245, 238)) 248 270
+'fig7.draw(shade, bottom, color(246, 245, 238)) 248 270
 fig5.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig7.options linepat
 fig7.options gridl gridb gridauto frameaxes("none")
 fig7.axis mirror
-fig7.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig7.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig7.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig7.setelem(2) lcolor(black) lwidth(2) lpat(2)
 'fig7.setelem(2) lcolor(grey) lwidth(2) lpat(1)
 'fig7.setelem(4) lcolor(grey) lwidth(2) lpat(2)
 'fig4.setelem(5) lcolor(green) lwidth(2) lpat(2)
-fig7.name(1)  Gdp  ' (lower credit supply) 
-'fig7.name(2) Gdp      (stronger credit supply)                 'w loans  'rentiers consumption
+fig7.name(1)  Gdp  ' (lower emulation) 
+'fig7.name(2) Gdp      (stronger emulation)                 'w loans  'rentiers consumption
 'fig7.name(3) workers consumption 
 'fig5.name(4) workers consumption 
 'fig1.name(5) constot
 fig7.addtext(t,just(c),font(16))GDP'  workers disposable income and stock of debt after shock    'rentiers consumption and disposable income 
 fig7.legend -inbox
 show fig7
+fig7.save(t=jpg) fig7
 
 
 
 graph fig9.line    c2_1/c2_0  Y_1/Y_0    I_1/I_0  c1_1/c1_0  'c2_2/c2_0  Y_2/Y_0    I_2/I_0  c1_2/c1_0                                              '(lhh2_1)*0.001 yd2_1/yd2_0 lhh2_1/yd2_1 
-fig9.draw(shade, bottom, color(246, 245, 238)) 248 295
+'fig9.draw(shade, bottom, color(246, 245, 238)) 248 295
 fig9.draw(line, left, color(black),width(1),pattern(1)) '0.1
 fig9.options linepat
 fig9.options gridl gridb gridauto frameaxes("none")
 fig9.axis mirror
-fig9.setelem(1) lcolor(black) lwidth(2) lpat(1)
-fig9.setelem(2) lcolor(black) lwidth(2) lpat(2)
-fig9.setelem(3) lcolor(black) lwidth(2) lpat(3)
-fig9.setelem(4) lcolor(black) lwidth(2) lpat(4)
+'fig9.setelem(1) lcolor(black) lwidth(2) lpat(1)
+'fig9.setelem(2) lcolor(black) lwidth(2) lpat(2)
+'fig9.setelem(3) lcolor(black) lwidth(2) lpat(3)
+'fig9.setelem(4) lcolor(black) lwidth(2) lpat(4)
 'fig9.setelem(5) lcolor(grey) lwidth(2) lpat(1)
 'fig9.setelem(6) lcolor(grey) lwidth(2) lpat(2)
 'fig9.setelem(7) lcolor(grey) lwidth(2) lpat(3)
 'fig9.setelem(8) lcolor(grey) lwidth(2) lpat(4)
 'fig1.setelem(5) lcolor(green) lwidth(2) lpat(2)
-fig9.name(1) Workers consumption   '(lower credit supply)
-fig9.name(2) GDP    '  (lower credit supply)                       'w loans  'rentiers consumption
-fig9.name(3) Investment ' (lower credit supply)
-fig9.name(4) Rentiers consumption'   (lower credit supply)
-'fig9.name(5) Workers consumption   (stronger credit supply)
-'fig9.name(6) GDP                (stronger credit supply)              'w loans  'rentiers consumption
-'fig9.name(7) Investment   (stronger credit supply)
-'fig9.name(8) Rentiers consumption    (stronger credit supply)
+fig9.name(1) Workers consumption   '(lower emulation)
+fig9.name(2) GDP    '  (lower emulation)                       'w loans  'rentiers consumption
+fig9.name(3) Investment ' (lower emulation)
+fig9.name(4) Rentiers consumption'   (lower emulation)
+'fig9.name(5) Workers consumption   (stronger emulation)
+'fig9.name(6) GDP                (stronger emulation)              'w loans  'rentiers consumption
+'fig9.name(7) Investment   (stronger emulation)
+'fig9.name(8) Rentiers consumption    (stronger emulation)
 'fig1.name(5) constot
 fig9.addtext(t,just(c),font(16))   Demand dynamic and GDP 'rentiers consumption and disposable income 
 fig9.legend -inbox
 show fig9
-
+fig9.save(t=jpg) fig9
 
